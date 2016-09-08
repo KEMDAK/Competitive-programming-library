@@ -1,31 +1,34 @@
 package other_algorithms;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Scanner 
+class Scanner
 {
 	StringTokenizer st;
 	BufferedReader br;
 
-	public Scanner(InputStream s){	br = new BufferedReader(new InputStreamReader(s));}
+	public Scanner(InputStream s){ br = new BufferedReader(new InputStreamReader(s));}
 
-	public String next() throws IOException 
+	public Scanner(String fileName){	br = new BufferedReader(new FileReader(fileName));}
+
+	public String next() throws IOException
 	{
-		while (st == null || !st.hasMoreTokens()) 
+		while (st == null || !st.hasMoreTokens())
 			st = new StringTokenizer(br.readLine());
 		return st.nextToken();
 	}
 
 	public int nextInt() throws IOException {return Integer.parseInt(next());}
-	
+
 	public long nextLong() throws IOException {return Long.parseLong(next());}
 
 	public String nextLine() throws IOException {return br.readLine();}
-	
+
 	public double nextDouble() throws IOException
 	{
 		String x = next();
@@ -54,8 +57,12 @@ class Scanner
 		res += Long.parseLong(sb.toString()) / f;
 		return res * (neg?-1:1);
 	}
-	
+
 	public boolean ready() throws IOException {return br.ready();}
 
-
+	public void waitForInput(long time)
+	{
+		 long ct = System.currentTimeMillis();
+		 while(System.currentTimeMillis() - ct < time) {};
+	}
 }

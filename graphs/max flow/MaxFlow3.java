@@ -3,7 +3,9 @@ package graphs.max_flow;
 import java.util.LinkedList;
 import java.util.Queue;
 
-//Try to test the implementation with some input of your choice
+/*
+ * Max Flow: Push Relabel Algorithm
+ */
 public class MaxFlow3 {
 
 	static final int INF = (int)1e9;
@@ -26,7 +28,7 @@ public class MaxFlow3 {
 					q.add(v);
 				}
 		}
-		
+
 		boolean[] isActive = new boolean[V];
 		for(int i = 0; i < V; ++i)
 		{

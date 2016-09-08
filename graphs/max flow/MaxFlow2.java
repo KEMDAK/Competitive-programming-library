@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-//Try to test the implementation with some input of your choice
+
+/*
+ * Max Flow: dinic's Algorithm
+ */
 public class MaxFlow2 {
 
 	static final int INF = (int)1e9;
 	static int V, s, t, res[][];			//input
 	static ArrayList<Integer>[] adjList;	//input
 	static int[] ptr, dist;
-	
+
 	static int dinic()						//O(V^2E)
 	{
 		int mf = 0;
@@ -24,8 +27,8 @@ public class MaxFlow2 {
 		}
 		return mf;
 	}
-	
-	
+
+
 	static boolean bfs()
 	{
 		dist = new int[V];
@@ -47,7 +50,7 @@ public class MaxFlow2 {
 		}
 		return false;
 	}
-	
+
 	static int dfs(int u, int flow)
 	{
 		if(u == t)
@@ -67,6 +70,6 @@ public class MaxFlow2 {
 			}
 		}
 		return 0;
-		
+
 	}
 }

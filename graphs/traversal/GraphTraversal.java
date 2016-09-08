@@ -11,18 +11,18 @@ public class GraphTraversal {
 	static ArrayList<Integer>[] adjList;
 	static boolean[] visited, adjMat[];
 	static int V;
-	
-	public void preTraversal() 
+
+	public void preTraversal()
 	{
 		for(int i = 0; i < V; ++i)		//for non-connected graphs, Spanning Forest
 			if(!visited[i])
 				dfs(i);					//or bfs(i)
 	}
-	
+
 	/*
 	 * 1.Depth-First Search (DFS)
 	 */
-	static void dfs(int u)				//O(V + E) adjList, O(V^2) adjMat	
+	static void dfs(int u)				//O(V + E) adjList, O(V^2) adjMat
 	{
 		visited[u] = true;
 
@@ -36,7 +36,7 @@ public class GraphTraversal {
 			if(adjMat[u][i] && !visited[i])
 				dfs(i);
 	}
-	
+
 	/*
 	 * 2.Breadth-First Search (BFS)
 	 */
@@ -48,7 +48,7 @@ public class GraphTraversal {
 		while(!q.isEmpty())
 		{
 			int u = q.remove();
-	
+
 			for(int v: adjList[u])
 				if(!visited[v])
 				{
@@ -104,7 +104,7 @@ public class GraphTraversal {
 					return false;
 		return true;
 	}
-	
+
 	/*
 	 * 5.Flood Fill in Grids - Maze Problem (Reach (R-1, C-1) from (0, 0) using empty cells '.' only)
 	 */
@@ -133,7 +133,7 @@ public class GraphTraversal {
 	 * 6.Topological Sort
 	 */
 	static Stack<Integer> stack = new Stack<Integer>();
-	static void toposortDFS(int u)	//don't forget preTraversal	
+	static void toposortDFS(int u)	//don't forget preTraversal
 	{
 		visited[u] = true;
 
@@ -142,29 +142,29 @@ public class GraphTraversal {
 				dfs(v);
 		stack.push(u);
 	}
-	
+
 	static ArrayList<Integer> sortedArray;
-	static void toposortBFS()
+	static void toposortBFS() // Kahn's Algorithm
 	{
-		int[] p = new int[V];
+		int[] inDegree = new int[V];
 		sortedArray = new ArrayList<Integer>(V);
 		for(int i = 0; i < V; ++i)
 			for(int v: adjList[i])
-				++p[v];
+				++inDegree[v];
 		Queue<Integer> roots = new LinkedList<Integer>();	//PriorityQueue for smallest lexiographical sorting
 
 		for(int i = 0; i < V; ++i)
-			if(p[i] == 0)
+			if(inDegree[i] == 0)
 				roots.add(i);
 		while(!roots.isEmpty())
 		{
 			int u = roots.remove();
 			sortedArray.add(u);
 			for(int v: adjList[u])
-				if(--p[v] == 0)
+				if(--inDegree[v] == 0)
 					roots.add(v);
 		}
-		
-		//if p contains non-zero values -> failure, not a DAG!
+
+		//if inDegree contains non-zero values -> failure, not a DAG!
 	}
 }
