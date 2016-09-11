@@ -110,8 +110,8 @@ public class GraphTraversal {
 	 */
 	static char[][] grid;
 	static int R, C;
-	static int[] dx = new int[]{-1, 1, 0, 0};
-	static int[] dy = new int[]{0, 0, -1, 1};
+	static final int dx[] = {1, 0, -1, 0, 1, 1, -1, -1};
+	static final int dy[] = {0, 1, 0, -1, 1, -1, 1, -1}; 
 
 	static boolean valid(int i, int j)
 	{
