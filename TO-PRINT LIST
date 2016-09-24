@@ -2,7 +2,8 @@ List of all the changed documents so far:-
 ___________________________________________
 
 Strings/KMP
-other\ algorithms/Scanner
+other algorithms/Scanner
 graphs/traversal/GraphTraversal
 strings/SuffixTrie
 strings/SuffixArray
+data structures/trees/SegmentTree
